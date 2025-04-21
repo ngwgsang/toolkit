@@ -9,3 +9,7 @@ def split_sentences(text):
 
 def is_ascii(text):
     return all(ord(c) < 128 for c in text)
+
+def is_number(text):
+    return type(text) == type(79)
+
