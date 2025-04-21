@@ -10,7 +10,7 @@ setup(
         "seaborn",
     ],
     author='Sang Quang Nguyen',
-    description='A reusable NLP research toolkit with some bug',
+    description='A reusable toolkit with some bug',
     classifiers=[
         'Programming Language :: Python :: 3',
     ],
