@@ -20,4 +20,7 @@ pipeline = create_pipeline(step1 | step2 | step3)
 
 # Chạy thử
 pipeline("  Xin Chào GPT  ", 2)
+
+>>> Xin_Chào_GPT
+>>> Xin_Chào_GPT
 ```
