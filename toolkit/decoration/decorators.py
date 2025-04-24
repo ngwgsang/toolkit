@@ -81,3 +81,30 @@ def cooldown(delay=3):
             return result
         return wrapper
     return decorator
+
+def limit_calls(max_calls=5):
+    def decorator(func):
+        count = 0
+        @functools.wraps(func)
+        def wrapper(*args, **kwargs):
+            nonlocal count
+            if count >= max_calls:
+                raise RuntimeError(f"[limit_calls] {func.__name__} exceeded {max_calls} calls")
+            count += 1
+            return func(*args, **kwargs)
+        return wrapper
+    return decorator
+
+def validate_types(func):
+    import inspect
+    sig = inspect.signature(func)
+
+    @functools.wraps(func)
+    def wrapper(*args, **kwargs):
+        bound = sig.bind(*args, **kwargs)
+        for name, value in bound.arguments.items():
+            expected = sig.parameters[name].annotation
+            if expected is not inspect._empty and not isinstance(value, expected):
+                raise TypeError(f"[validate_types] {name} must be {expected}, got {type(value)}")
+        return func(*args, **kwargs)
+    return wrapper
