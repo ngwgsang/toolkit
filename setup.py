@@ -8,6 +8,7 @@ setup(
         "scikit-learn",
         "matplotlib",
         "seaborn",
+        "typing",
     ],
     author='Sang Quang Nguyen',
     description='A reusable toolkit with some bug',
