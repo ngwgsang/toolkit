@@ -64,3 +64,20 @@ def timer(unit="s"):
             return result
         return wrapper
     return decorator
+
+def cooldown(delay=3):
+    """
+    Delay for `delay` seconds after the decorated function completes.
+
+    Args:
+        delay: Number of seconds to wait after function execution.
+    """
+    def decorator(func):
+        @functools.wraps(func)
+        def wrapper(*args, **kwargs):
+            result = func(*args, **kwargs)
+            print(f"[cooldown] Cooling down for {delay} second(s)...")
+            time.sleep(delay)
+            return result
+        return wrapper
+    return decorator
